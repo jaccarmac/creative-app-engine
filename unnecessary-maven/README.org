@@ -1,0 +1,17 @@
+* Requirements.
+
+  * Leiningen.
+  * App Engine tools for Java.
+
+* Building and running.
+
+  1. Build a WAR file.
+     #+BEGIN_SRC sh
+       lein ring uberwar
+     #+END_SRC
+  2. Unpack the file into =war=.
+  3. Copy =appengine-web.xml= into =war/WEB-INF=.
+  4. Run the development server.
+     #+BEGIN_SRC sh
+       dev_appserver.sh war
+     #+END_SRC

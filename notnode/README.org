@@ -1,0 +1,16 @@
+* Requirements.
+
+  * Go.
+  * godep.
+  * App Engine SDK for Go.
+
+* Building and running.
+
+  1. Check out dependencies into your $GOPATH.
+     #+BEGIN_SRC sh
+       godep restore
+     #+END_SRC
+  2. Start the development server.
+     #+BEGIN_SRC sh
+       dev_appserver.py .
+     #+END_SRC

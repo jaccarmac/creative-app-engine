@@ -1,0 +1,227 @@
+#+TITLE: Creative App Engine
+#+AUTHOR: Jacob MacDonald
+#+EMAIL: jacob@stickmanventures.com
+
+#+REVEAL_THEME: night
+#+REVEAL_TRANS: linear
+#+OPTIONS: num:nil, toc:nil
+
+* I'm on the Internet!
+
+  * Source: https://github.com/StickmanVentures/creative-app-engine
+  * Submodules:
+    * [[http://java.gdg-oakdale-2014-july.appspot.com][Java.]]
+    * [[http://go.gdg-oakdale-2014-july.appspot.com][Go.]]
+    * [[http://python.gdg-oakdale-2014-july.appspot.com][Python.]]
+
+* App Engine is awesome.
+
+** Familiar runtimes.
+
+   * Python/Java/PHP/Go.
+
+** Powerful libraries.
+
+   * Python: PyPI.
+   * Java: Maven Central/Clojars/Gradle
+   * Go: Standard library/the Internet.
+   * PHP: ?/App Engine's extensions.
+   * Google's libraries.
+   #+BEGIN_SRC python
+     from google.appengine.ext import ndb
+
+     class TestModel(ndb.Model):
+         x = ndb.StringProperty(required=True)
+         y = ndb.GeoPtProperty
+         z = ndb.DateTimeProperty(auto_now_add=True)
+
+     TestModel(x="test").put()
+
+     TestModel.query(TestModel.x == "test")
+   #+END_SRC
+
+** Excellent scaling.
+
+   * Nine classes.
+   * Three instance types.
+     * Automatic.
+     * Manual.
+     * Basic.
+   * Free instance hours.
+     * 28/8/8.
+
+* App Engine isn't perfect.
+
+** The Sandbox.
+
+   * Limited file I. No O.
+   * No native extensions.
+   * Response time limits.
+
+** Python/Java/Go/PHP sucks.
+
+   * Python is slow.
+   * Java is complex.
+   * Go is new.
+   * PHP is PHP.
+
+** Locked to a platform.
+
+   * Configuration won't transfer to other hosts (exception: Java...).
+   * App Engine libraries only work on App Engine.
+
+* Java: Maven is unnecessary.
+
+  * App Engine uses the JVM, which is fantastic.
+  * You can use your favorite JVM language (Scala, Clojure, Python, Ruby).
+  * WAR directories seem fancy, but they aren't.
+    * Class files.
+    * XML.
+
+** Google's way.
+
+   1. Generate an archetype.
+      #+BEGIN_SRC sh
+        mvn archetype:generate
+        com.google.appengine.archetypes:skeleton-archetype
+        1
+        com.stickmanventures.gdg
+        example
+        0-1-0
+
+        Y
+      #+END_SRC
+   2. Edit =example/example-ear/src/main/application/META-INF/appengine-application.xml=.
+      #+BEGIN_SRC xml
+        <application>example</application>
+      #+END_SRC
+   3. Edit =example/pom.xml=.
+      #+BEGIN_SRC xml
+        <appengine.target.version>1.9.6</appengine.target.version>
+      #+END_SRC
+   4. Compile everything.
+      #+BEGIN_SRC sh
+        mvn clean install
+      #+END_SRC
+   5. Write Java servlets.
+
+** Jacob's way.
+
+   1. Generate a Compojure project.
+      #+BEGIN_SRC sh
+        lein new compojure example
+      #+END_SRC
+   2. WAR it up.
+      #+BEGIN_SRC sh
+        lein ring uberwar
+      #+END_SRC
+   3. Unzip the WAR.
+   4. Write your own =example/appengine-web.xml=.
+      #+BEGIN_SRC xml
+        <appengine-web-app xlmns="http://appengine.google.com/ns/1.0">
+          <application>example</application>
+          <version>0-1-0</version>
+          <threadsafe>true</threadsafe>
+        </appengine-web-app>
+      #+END_SRC
+   5. Copy it into =example/war/WEB-INF=.
+   6. Deploy or test.
+      #+BEGIN_SRC sh
+        dev_appserver.sh war
+
+        appcfg.sh update war
+     #+END_SRC
+
+** Your way.
+
+   1. Make class files.
+   2. Put them in a WAR.
+   3. Write some XML.
+   4. Deploy.
+   5. Profit?
+
+* Go: Not quite Node.
+
+  * Go is relatively fast.
+  * Go runs the first time (!).
+  * Go is still young.
+
+** Naive Node.
+
+   #+INCLUDE: "notnode/notnode.go" src go
+
+** My simple handler.
+
+   #+INCLUDE: "notnode/main.js" src js
+
+* Python: Write fast, run slow.
+
+  * Access great libraries.
+  * Write fast.
+  * Run slow.
+
+** Our goal.
+
+   Get from this:
+   #+BEGIN_SRC python
+     import webapp2
+
+     class MainPage(webapp2.RequestHandler):
+         def get(self):
+             self.response.headers['Content-Type'] = 'text/plain'
+             self.response.write('Hello, world!')
+
+     app = webapp2.WSGIApplication([('/', MainPage)], debug=True)
+   #+END_SRC
+
+   To this:
+   #+BEGIN_SRC python
+     import flask
+     app = flask.Flask(__name__)
+
+     @app.route('/')
+     def helloworld():
+         return('Hello, world!')
+   #+END_SRC
+
+   Or, for Lisp lovers:
+   #+INCLUDE: "python-as-vm/main.hy" src hy
+
+** Flask and Virtualenv.
+
+   What you want to do:
+   #+BEGIN_SRC sh
+     virtualenv venv -p python2.7
+     source venv/bin/activate
+     pip install Flask
+     dev_appserver.py .
+   #+END_SRC
+
+   What you have to do:
+   #+INCLUDE: "python-as-vm/launch.py" src python :lines "5-9"
+
+** AST hacking.
+
+   Unfortunately, AST hacking is the best hacking you can do.
+
+   And, you have to do it on your end.
+   #+BEGIN_EXAMPLE
+     Traceback (most recent call last):
+       ...
+       File ".../venv/lib/python2.7/site-packages/rply/parsergenerator.py", line 134, in build
+         tempfile.gettempdir(),
+       File ".../google_appengine/google/appengine/dist/tempfile.py", line 61, in PlaceHolder
+         raise NotImplementedError("Only tempfile.TemporaryFile is available for use")
+     NotImplementedError: Only tempfile.TemporaryFile is available for use
+   #+END_EXAMPLE
+   Translation: :-(
+
+   #+BEGIN_SRC sh
+     source venv/bin/activate
+     hyc main.hy
+     deactivate
+   #+END_SRC
+
+* Thanks much!
+
+  Now get out there and hack some stuff.

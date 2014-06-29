@@ -1,0 +1,13 @@
+application: gdg-oakdale-2014-july
+version: 1-0-0
+
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+  - url: /
+    static_files: creative-app-engine.html
+    upload: creative-app-engine.html
+  - url: /reveal.js
+    static_dir: reveal.js

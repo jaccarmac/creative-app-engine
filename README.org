@@ -1,0 +1,34 @@
+* Requirements.
+
+  * Git.
+  * Grunt.
+  * Node.js.
+  * Emacs.
+  * Org mode.
+  * =htmlize.el=.
+  * Org-Reveal.
+
+* Building and running.
+
+  1. Check out the submodule version of reveal.js.
+     #+BEGIN_SRC sh
+       git submodule update --init
+     #+END_SRC
+  2. Install Grunt in the submodule.
+     #+BEGIN_SRC sh
+       cd reveal.js
+       npm install
+     #+END_SRC
+  3. Build reveal.js
+     #+BEGIN_SRC sh
+       grunt
+     #+END_SRC
+  4. Open =creative-app-engine.org= in Emacs.
+  5. Load Org-Reveal
+     #+BEGIN_SRC elisp
+       (load-library "ox-reveal")
+     #+END_SRC
+  6. Export the presentation and open it in a web browser.
+     #+BEGIN_SRC elisp
+       (org-reveal-export-to-html-and-browse)
+       #+END_SRC
