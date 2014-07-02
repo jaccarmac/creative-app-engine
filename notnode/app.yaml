@@ -1,6 +1,6 @@
 application: gdg-oakdale-2014-july
 module: go
-version: 1-0-2
+version: 1-0-3
 
 runtime: go
 api_version: go1
