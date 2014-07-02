@@ -221,6 +221,7 @@
      hyc main.hy
      deactivate
    #+END_SRC
+   #+INCLUDE: "python-as-vm/app.yaml" src yaml :lines "9-11"
 
 * Thanks much!
 
