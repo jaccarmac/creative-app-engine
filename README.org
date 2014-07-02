@@ -19,12 +19,12 @@
        cd reveal.js
        npm install
      #+END_SRC
-  3. Build reveal.js
+  3. Build reveal.js.
      #+BEGIN_SRC sh
        grunt
      #+END_SRC
   4. Open =creative-app-engine.org= in Emacs.
-  5. Load Org-Reveal
+  5. Load Org-Reveal.
      #+BEGIN_SRC elisp
        (load-library "ox-reveal")
      #+END_SRC
