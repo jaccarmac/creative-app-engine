@@ -15,15 +15,20 @@
      #+BEGIN_SRC sh
        pip install -r requirements.txt
      #+END_SRC
-  3. Compile the Hy source code.
+  3. Deactivate and reactivate the Virtualenv.
+     #+BEGIN_SRC sh
+       deactivate
+       source venv/bin/activate
+     #+END_SRC
+  4. Compile the Hy source code.
      #+BEGIN_SRC sh
        hyc main.hy
      #+END_SRC
-  4. Deactivate the Virtualenv.
+  5. Deactivate the Virtualenv.
      #+BEGIN_SRC sh
        deactivate
      #+END_SRC
-  5. Start the development server.
+  6. Start the development server.
      #+BEGIN_SRC sh
        dev_appserver.py
      #+END_SRC
