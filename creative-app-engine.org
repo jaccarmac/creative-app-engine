@@ -10,9 +10,9 @@
 
   * Source: https://github.com/StickmanVentures/creative-app-engine
   * Submodules:
-    * [[http://java.gdg-oakdale-2014-july.appspot.com][Java.]]
-    * [[http://go.gdg-oakdale-2014-july.appspot.com][Go.]]
-    * [[http://python.gdg-oakdale-2014-july.appspot.com][Python.]]
+    * [[http://java.neumont-dlc-2014-october-23.appspot.com][Java.]]
+    * [[http://go.neumont-dlc-2014-october-23.appspot.com][Go.]]
+    * [[http://python.neumont-dlc-2014-october-23.appspot.com][Python.]]
 
 * App Engine is awesome.
 
@@ -85,7 +85,7 @@
         mvn archetype:generate
         com.google.appengine.archetypes:skeleton-archetype
         1
-        com.stickmanventures.gdg
+        com.jaccarmac.neumont-dlc
         example
         0-1-0
 
