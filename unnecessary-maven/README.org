@@ -1,12 +1,14 @@
 * Requirements.
 
   * Leiningen.
+  * =lein-voom=.
   * App Engine tools for Java.
 
 * Building and running.
 
   1. Build a WAR file.
      #+BEGIN_SRC sh
+       lein voom build-deps
        lein ring uberwar
      #+END_SRC
   2. Unpack the file into =war=.
