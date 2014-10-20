@@ -1,6 +1,6 @@
 {
-	"ImportPath": "github.com/StickmanVentures/creative-app-engine/notnode",
-	"GoVersion": "devel +5f017e1d0129 Tue Jul 01 10:28:10 2014 -0700",
+	"ImportPath": "github.com/jaccarmac/creative-app-engine/notnode",
+	"GoVersion": "devel +6d6fbf7dee5b Mon Oct 20 11:10:03 2014 -0700",
 	"Deps": [
 		{
 			"ImportPath": "github.com/robertkrimen/otto",
