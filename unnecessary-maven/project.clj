@@ -1,4 +1,4 @@
-(defproject unnecessary-maven "2.0.2"
+(defproject unnecessary-maven "2.1.0"
   :description "Use non-Maven JVM build tools on App Engine."
   :dependencies [^{:voom {:repo "https://github.com/weavejester/compojure"
                           :branch "master"}}
