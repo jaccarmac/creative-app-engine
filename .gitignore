@@ -1,6 +1,6 @@
 /creative-app-engine.html
 /notnode/Godeps/_workspace/
-/python-as-vm/*.pyc
+/python-as-vm/main.py*
 /python-as-vm/venv/
 /unnecessary-maven/target/
 /unnecessary-maven/war/

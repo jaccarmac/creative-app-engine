@@ -185,7 +185,7 @@
    #+END_SRC
 
    Or, for Lisp lovers:
-   #+INCLUDE: "python-as-vm/main.hy" src hy
+   #+INCLUDE: "python-as-vm/main.hy" src hy :lines "6-"
 
 ** Flask and Virtualenv.
 
@@ -198,30 +198,10 @@
    #+END_SRC
 
    What you have to do:
-   #+INCLUDE: "python-as-vm/launch.py" src python :lines "5-9"
-
-** AST hacking.
-
-   Unfortunately, AST hacking is the best hacking you can do.
-
-   And, you have to do it on your end.
-   #+BEGIN_EXAMPLE
-     Traceback (most recent call last):
-       ...
-       File ".../venv/lib/python2.7/site-packages/rply/parsergenerator.py", line 134, in build
-         tempfile.gettempdir(),
-       File ".../google_appengine/google/appengine/dist/tempfile.py", line 61, in PlaceHolder
-         raise NotImplementedError("Only tempfile.TemporaryFile is available for use")
-     NotImplementedError: Only tempfile.TemporaryFile is available for use
-   #+END_EXAMPLE
-   Translation: :-(
-
+   #+INCLUDE: "python-as-vm/main.hy" src python :lines "1-5"
    #+BEGIN_SRC sh
-     source venv/bin/activate
-     hyc main.hy
-     deactivate
+     hy2py main.hy > main.py
    #+END_SRC
-   #+INCLUDE: "python-as-vm/app.yaml" src yaml :lines "9-11"
 
 * Thanks much!
 

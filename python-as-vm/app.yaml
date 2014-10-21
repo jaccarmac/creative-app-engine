@@ -6,9 +6,6 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
-skip_files:
-  - ^$
-
 handlers:
   - url: /.*
-    script: launch.app
+    script: main.app

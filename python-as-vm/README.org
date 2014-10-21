@@ -22,7 +22,7 @@
      #+END_SRC
   4. Compile the Hy source code.
      #+BEGIN_SRC sh
-       hyc main.hy
+       hy2py main.hy > main.py
      #+END_SRC
   5. Deactivate the Virtualenv.
      #+BEGIN_SRC sh
