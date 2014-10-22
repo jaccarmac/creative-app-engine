@@ -1,10 +1,16 @@
 #+TITLE: Creative App Engine
 #+AUTHOR: Jacob MacDonald
-#+EMAIL: jacob@stickmanventures.com
+#+EMAIL: jaccarmac@gmail.com
 
 #+REVEAL_THEME: night
 #+REVEAL_TRANS: linear
 #+OPTIONS: num:nil, toc:nil
+
+* About me.
+
+  * 18 years old.
+  * Five years of programming experience.
+  * One year of professional experience at Stickman Ventures.
 
 * I'm on the Internet!
 
