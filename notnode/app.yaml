@@ -1,6 +1,4 @@
-application: neumont-dlc-2014-october-23
-module: go
-version: 2-3-0
+service: go
 
 runtime: go
 api_version: go1
